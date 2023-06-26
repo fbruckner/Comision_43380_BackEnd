@@ -45,7 +45,11 @@ class ProductManager {
 let nuevoProducto = new ProductManager(`./productos.json`);
 
 nuevoProducto.deleteProduct(3);
+
 nuevoProducto.updateProduct(1, {stock: 100});
+
 //nuevoProducto.updateProduct(2, { price: 1000 });
+
 //nuevoProducto.updateProduct(3, { title: "Test Product 3 bis" });
+
 nuevoProducto.getAllProducts();
