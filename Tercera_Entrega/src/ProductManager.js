@@ -1,5 +1,4 @@
 import fs from "fs";
-
 export class ProductManager {
     constructor(filePath) {
         this.path = filePath;

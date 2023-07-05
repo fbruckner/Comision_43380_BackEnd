@@ -14,7 +14,7 @@ app.get("/products",(req,res)=>{
         const result = productService.getProducts();
         console.log("result: ", result);
         const limite = parseInt(req.query.limit);
-        console.log("limite: ", limite);
+        //console.log("limite: ", limite);
         if (limite>0) {
             resultado = result.filter(producto=>producto.id <= limite);
         } else {
