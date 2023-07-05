@@ -1,4 +1,3 @@
-//const fs = require('fs');
 import fs from "fs";
 
 export class ProductManager {
@@ -17,7 +16,7 @@ export class ProductManager {
             console.log("loadProducts: ", this.products);
             return this.products;
         } catch (err) {
-            console.error('Error loading products:', err);
+            console.error('Error al cargar producto:', err);
             return [];
         }
     }
@@ -26,7 +25,7 @@ export class ProductManager {
         try {
             await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2));
         } catch (err) {
-            console.error('Error saving products:', err);
+            console.error('Error al grabar producto:', err);
         }
     }
 
@@ -38,13 +37,13 @@ export class ProductManager {
 
     addProduct(product) {
         if (!product.title || product.title == "" || !product.description || product.description == "" || !product.price || product.price == 0 || !product.thumbnail || product.thumbnail == "" || !product.code || product.code == "" || !product.stock) {
-            console.error('All fields are required');
+            console.error('Todos los campos son requeridos');
             return;
         }
 
         const existingProduct = this.products.find((p) => p.code === product.code);
         if (existingProduct) {
-            console.error('Product with the same code already exists');
+            console.error('Producto ya existe');
             return;
         }
 
@@ -69,7 +68,7 @@ export class ProductManager {
     getProductById(id) {
         const product = this.products.find((p) => p.id === id);
         if (!product) {
-            console.error('Not found');
+            console.error('Producto no encontrado');
             return;
         }
         return product;
@@ -78,7 +77,7 @@ export class ProductManager {
     updateProduct(id, updatedFields) {
         const productIndex = this.products.findIndex((p) => p.id === id);
         if (productIndex === -1) {
-            console.error('Not found');
+            console.error('Producto no encontrado');
             return;
         } else {
             console.log("Producto para update encontrado!");
@@ -92,7 +91,7 @@ export class ProductManager {
     deleteProduct(id) {
         const productIndex = this.products.findIndex((p) => p.id === id);
         if (productIndex === -1) {
-            console.error('Not found');
+            console.error('Producto no encontrado');
             return;
         }
 
